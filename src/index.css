@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Aton Brand Colors */
+    --background: 225 33% 98%;
+    --foreground: 220 14% 19%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 19%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 19%;
+
+    /* Primary: Dark Blue #000038 */
+    --primary: 240 100% 11%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Light background */
+    --secondary: 225 33% 96%;
+    --secondary-foreground: 220 14% 19%;
+
+    /* Muted */
+    --muted: 225 20% 92%;
+    --muted-foreground: 220 10% 46%;
+
+    /* Accent: Yellow #F8D808 */
+    --accent: 52 95% 50%;
+    --accent-foreground: 240 100% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 20% 88%;
+    --input: 225 20% 88%;
+    --ring: 52 95% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Aton tokens */
+    --aton-blue: 240 100% 11%;
+    --aton-yellow: 52 95% 50%;
+    --aton-yellow-glow: 52 95% 60%;
+    --aton-bg: 225 33% 98%;
+    --aton-text: 220 14% 19%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(240 100% 8% / 0.95), hsl(240 100% 15% / 0.9));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(225 33% 98%));
+    --gradient-accent: linear-gradient(135deg, hsl(52 95% 50%), hsl(52 95% 60%));
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(240 100% 11% / 0.06);
+    --shadow-md: 0 4px 20px hsl(240 100% 11% / 0.08);
+    --shadow-lg: 0 8px 40px hsl(240 100% 11% / 0.12);
+    --shadow-glow: 0 0 30px hsl(52 95% 50% / 0.4);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 100% 6%;
+    --foreground: 0 0% 98%;
+    --card: 240 100% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 100% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 52 95% 50%;
+    --primary-foreground: 240 100% 11%;
+    --secondary: 240 50% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 30% 20%;
+    --muted-foreground: 225 20% 65%;
+    --accent: 52 95% 50%;
+    --accent-foreground: 240 100% 11%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 30% 20%;
+    --input: 240 30% 20%;
+    --ring: 52 95% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  /* Industrial Grid Pattern */
+  .industrial-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Orbit decoration */
+  .orbit-decoration {
+    position: absolute;
+    border: 1px solid hsl(var(--accent) / 0.15);
+    border-radius: 50%;
+    animation: orbit-rotate 30s linear infinite;
+  }
+
+  /* Glow effects */
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3), 0 0 40px hsl(var(--accent) / 0.15);
+  }
+
+  .glow-accent-hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .glow-accent-hover:hover {
+    box-shadow: 0 0 25px hsl(var(--accent) / 0.4), 0 0 50px hsl(var(--accent) / 0.2);
+    transform: translateY(-2px);
+  }
+
+  /* Glass effect */
+  .glass {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-dark {
+    background: hsl(var(--primary) / 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Pulse animation for WhatsApp */
+  .pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card industrial style */
+  .card-industrial {
+    @apply bg-card rounded-xl border border-border/50 p-6 transition-all duration-300;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-industrial:hover {
+    box-shadow: var(--shadow-md);
+    border-color: hsl(var(--accent) / 0.3);
+  }
+
+  /* Service card specific */
+  .service-card {
+    @apply relative overflow-hidden bg-card rounded-xl border border-border/50 p-6 transition-all duration-300;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(var(--accent) / 0) 0%, hsl(var(--accent) / 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-lg), 0 0 30px hsl(var(--accent) / 0.15);
+    border-color: hsl(var(--accent) / 0.5);
+    transform: translateY(-4px);
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--aton-yellow-glow)));
+    color: hsl(var(--primary));
+    box-shadow: 0 4px 15px hsl(var(--accent) / 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px hsl(var(--accent) / 0.5);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+    border: 2px solid hsl(var(--primary-foreground) / 0.3);
+    color: hsl(var(--primary-foreground));
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    border-color: hsl(var(--accent));
+    color: hsl(var(--accent));
+    background: hsl(var(--accent) / 0.1);
+  }
+
+  /* Input style */
+  .input-modern {
+    @apply w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground transition-all duration-300;
+  }
+
+  .input-modern:focus {
+    @apply outline-none ring-2 ring-accent border-accent;
+  }
+
+  .input-modern::placeholder {
+    @apply text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  /* Parallax helper */
+  .parallax-slow {
+    transform: translateZ(-1px) scale(2);
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--aton-yellow-glow)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Accent underline */
+  .accent-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .accent-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--accent)), transparent);
+    border-radius: 2px;
+  }
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
